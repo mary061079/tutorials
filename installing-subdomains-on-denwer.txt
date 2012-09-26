@@ -1,0 +1,40 @@
+1. В файле 
+/WebServers/usr/local/Apach/conf/httpd.conf
+после #  ServerAlias "%&/-www" "%&/-www/www" $&{host:-}
+добавить 
+# ServerAlias %&/-www %&/-www/* $&{host:-} 
+
+в двух местах и перезапустить денвер, чтобы он попрописывал по новому шаблону в httpd-vhosts.conf
+
+2. С:/Windows/System32/drivers/etc/hosts/
+добавить aliasы 
+          127.0.0.1	www.b2bforsap.gxs.com b2bforsap.gxs.com
+          127.0.0.1	www.b2bheroes.gxs.com b2bheroes.gxs.com
+          
+Если я хочу вообще переопределить домен, то в файле urs/local/apache/conf/httpd.conf после строки Include conf/vhosts.conf пишу свои правила, типа 
+
+<VirtualHost 127.0.0.1:80>
+  DocumentRoot "Y:/home/gxs-asia.com/www"  
+  ServerName "gxs-asia.com"
+  ServerAlias "gxs-asia.com" "www.gxs-asia.com" 
+  ServerAlias gxs-asia.com *.gxs-asia.com    
+  ServerAlias gxs-asia.com gxs.co.jp      
+  ScriptAlias /cgi/ "/home/gxs-asia.com/cgi/"
+  ScriptAlias /cgi-bin/ "/home/gxs-asia.com/cgi-bin/"
+</VirtualHost>
+
+# Host /home/gxs-asia.com/www (30): 
+#Listen 127.0.0.1:443
+#NameVirtualHost 127.0.0.1:443
+<VirtualHost 127.0.0.1:443>
+  SSLEngine on
+  DocumentRoot "Y:/home/gxs-asia.com/www"  
+  ServerName "gxs-asia.com"
+  ServerAlias "gxs-asia.com" "www.gxs-asia.com" 
+  ServerAlias gxs-asia.com *.gxs-asia.com 
+  ServerAlias gxs-asia.com gxs.co.jp            
+  ScriptAlias /cgi/ "/home/gxs-asia.com/cgi/"
+  ScriptAlias /cgi-bin/ "/home/gxs-asia.com/cgi-bin/"
+</VirtualHost>
+
+Тогда он будет их выполнять после регенерации vhosts.conf

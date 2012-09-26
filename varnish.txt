@@ -1,0 +1,8 @@
+Установка varnish + apache
+http://www.mormanski.net/2010/08/14/install-configure-varnish-on-ubuntu-lucid-linux
+
+уроки по написанию конфига. Он находится в /etc/varnish/default.vcl
+https://www.varnish-cache.org/trac/wiki/Introduction
+
+несколько сайтов в одном конфиге 
+http://stackoverflow.com/questions/3334023/configure-multiple-sites-with-varnish

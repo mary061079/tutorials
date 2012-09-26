@@ -1,0 +1,13 @@
+DOCUMENTATION
+http://sphinxsearch.com/docs/1.10/installing-windows.html
+
+1. Качаем дистрибутив для windows отсюда :http://sphinxsearch.com/downloads/accept.php?file=sphinx-2.0.4-release-win32.zip
+2. Распечатываем в любую папку 
+3. Правим sphinx.conf.in так чтобы @CONFDIR@ везде заменить на папку установки (C:/sphinx)
+4. seamless_rotate = 0 (только для ВИНДЫ!!!)
+5. качаем файл libmysql.dll, кидаем его в папку C:/Windows/System32
+5. Открываем cmd от имени администратора
+6. заходим в C:\Sphinx\bin> 
+7. пишем C:\Sphinx\bin\searchd --install --config C:\Sphinx\sphinx.conf.in --servicename SphinxSearch, (где  C:\Sphinx\sphinx.conf.in - путь к конфигу, который может лежать где угодно)
+8. копируем файл sphinx-min.conf.in  и переносим его в папку /bin
+10.правой кнопкой на 'my computer', управление -> служебные программы - там будет иконка SphinxSearch, которую можно запустить нажатием правой кноки -> запустить

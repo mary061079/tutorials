@@ -1,0 +1,22 @@
+HACK FOR IE6 PNG IMAGES TRANSPARANCY
+.logo { background: none; filter: progid:DXImageTransform.Microsoft. » AlphaImageLoader(src="/path/to/logo.png", » sizingMethod="scale"); }
+улучшить качество картинок png в ie: загрузить js c этой страницы и просто его подключить
+http://bkaprt.com/rwd/16/
+
+CSS 3
+backgdound-size
+support for all browsers http://srobbin.com/jquery-plugins/backstretch/ 
+
+SCALING THE FONT
+Шрифт, равный 100% в браузере, на самом деле равен 16px по дефолту
+Чтобы рассчитать его значение в em, необходимо его значение из маркапа, например 24 px разделить на значение шрифта в парентовом элементе, 
+т.е. если body шрифт равен 16px, то значение шрифта 24 px будет равно 24/16 em.
+
+ПОДКЛЮЧЕНИЕ СТИЛЕЙ ДЛЯ ПРИНТОВОЙ ВЕРСИИ
+<link rel="stylesheet" type="text/css" media="print" href="print.css" />
+recognized media types are: all, braille, embossed, handheld, print, projection, screen, speech, tty,  and tv.
+
+testing instruments
+pingdom.tool
+gtmetrix
+w3checker
