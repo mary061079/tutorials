@@ -1,0 +1,41 @@
+Установка compass haml на windows
+1. Устанавливаем Ruby (http://rubyinstaller.org/about/contributors)
+2. через cmd заходим в папку bin Ruby (C://Ruby193/bin)
+3. gem install haml
+   gem install haml-edge
+   gem install compass
+Если вылезла ошибка (Errno:: ENOENT), то делаем SET home=%USERPROFILE%
+4.compass create (полный путь до папки, где будет находится проект sass(D:/WebServers/home/iculture/www/wp-content/themes/my-theme))
+5. чтобы скомпилировать файл css -> compass compile [D:/path/to/project]  -> сгенерит 2 папки - sass (там будут файлы *.scss) и stylesheet, где будут остальные сгенеренные файлы *css.
+
+Далее 
+1. скачиваем builder c гита, как по документации к ATF https://github.com/W3EDGE/auctollo-framework/wiki/Development-Environment
+2. Из папки ruby (C://Ruby193/bin) запускаем консоль гитовскую, устанавливаем все модули, прописанные в builder/Gemfile:
+  gem install listen
+  gem install colorize
+  gem install sass
+  gem install sass-globbing -v 1.0.0.rc.1 --pre
+3. Устанавливаем bundler (gem install bundler)
+4. Идем в папку с builder, запускаем оттуда консоль и печатаем gem install C:/Ruby193/bin/bundler  (путь к ранее установленному бандлеру в ruby)
+
+5. В файле builder/share.rb правим 16 строку (прописываем абсолютные пути к файлу php.exe и к файлу builder/MtHaml/bin/mthaml.php)  -> cmd = "D:/WebServers/usr/local/php5/php.exe D:/WebServers/home/iculture/www/wp-content/themes/builder/MtHaml/bin/mthaml.php #{file_in} #{file_out}"
+
+6. запускаем генерацию из папки ruby (C://Ruby193/bin) ->
+ ruby D:/WebServers/home/iculture/www/wp-content/themes/builder/atfwatch.rb D:/WebServers/home/iculture/www/wp-content/themes/child-theme  (путь до темы, где все *.haml файлы). Запуск этого файла позволяет   автоматически апдейтить все сss и php файлы при сохранении sass или haml соответственно.
+ 
+7. должен вылезти windowский popup с ошибкой об отсутствии файла ssleay32.dll. Находим этот файл и кидаем в папку с файлом php.exe (D:/WebServers/usr/local/php5/php.exe). запускаем atfwatcher командой из пункта 6.
+
+НАСТРОЙКА SASS на АТF Framework
+
+8. качаем тему child с гита, как написано в документации по atf framework
+
+9. builder/share.rb  редактируем 29 строку  cmd = "cd C:/Ruby193/bin/ && compass compile #{root_dir}",
+   где C:/Ruby193/bin/ - папка с бинарными файлами руби. Таким образом у нас начинает читаться действующий в теме config.rb, который перезаписывает все дефолтные настройки.
+
+10. child-theme/config.rb строка 2 редактируем:
+   require 'singleton' 
+   require "C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-globbing-1.0.0.rc.1/lib/sass-globbing.rb";      (абсолютный путь к запуску модуля sass-globbing)
+
+   Чтобы пофиксить синтаксические ошибки в child-theme нужно:
+   1. добавить $mq-desktop: value в globals/_vars.scss
+   А лучше стереть их содержимое и написать свое, оставив только вверху в файле child-theme/raw-assets/style.scss файлы подключения модулей ruby, к которым прописать абсолютные пути (найти их можно в папке установки ruby, C:/Ruby193).
