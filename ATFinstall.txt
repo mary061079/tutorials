@@ -31,13 +31,19 @@
 
 9. builder/share.rb  редактируем 29 строку  cmd = "cd C:/Ruby193/bin/ && compass compile #{root_dir}",
    где C:/Ruby193/bin/ - папка с бинарными файлами руби. Таким образом у нас начинает читаться действующий в теме config.rb, который перезаписывает все дефолтные настройки.
+   Вообще в любом проекте, который должен просматриваться на генерацию файлов *.css или *.html c помощью compass или haml (в данном случае это D:/WebServers/home/iculture/www/wp-content/themes/child-theme), можно создать config.rb, и там прописать 
+   css_dir = "assets/css"        
+   sass_dir = "raw-assets/sass"
+   relative_assets = true (позволяет рассматривать относительные пути к папкам). 
+   
+   Данный файл перезаписывает все переменные, назначенные в ruby по дефолту
 
 10. child-theme/config.rb строка 2 редактируем:
    require 'singleton' 
    require "C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-globbing-1.0.0.rc.1/lib/sass-globbing.rb";      (абсолютный путь к запуску модуля sass-globbing)
+   
 
-11.Чтобы пофиксить синтаксические ошибки в child-theme нужно:
-   child-theme/raw-assets/sass/style.scss строка 22 поставить перед всеми импортами /:
+11.Чтобы правильно подключить все модули из child-theme, нужно в файле child-theme/raw-assets/sass/style.scss строка 20 поставить перед всеми импортами "/":
     @import "/globals/*";
     @import "/base/*";  
     @import "/layout/*";
