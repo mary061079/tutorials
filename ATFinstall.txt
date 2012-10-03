@@ -36,6 +36,10 @@
    require 'singleton' 
    require "C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-globbing-1.0.0.rc.1/lib/sass-globbing.rb";      (абсолютный путь к запуску модуля sass-globbing)
 
-   Чтобы пофиксить синтаксические ошибки в child-theme нужно:
-   1. добавить $mq-desktop: value в globals/_vars.scss
-   А лучше стереть их содержимое и написать свое, оставив только вверху в файле child-theme/raw-assets/style.scss файлы подключения модулей ruby, к которым прописать абсолютные пути (найти их можно в папке установки ruby, C:/Ruby193).
+11.Чтобы пофиксить синтаксические ошибки в child-theme нужно:
+   child-theme/raw-assets/sass/style.scss строка 22 поставить перед всеми импортами /:
+    @import "/globals/*";
+    @import "/base/*";  
+    @import "/layout/*";
+    @import "/modules/*";
+    @import "/templates/*"; 
