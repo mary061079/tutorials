@@ -43,3 +43,7 @@
     @import "/layout/*";
     @import "/modules/*";
     @import "/templates/*"; 
+
+12. Для легкого запуска из консоли, чтобы каждый раз не писать команду, создаем файл execute_watch.bat, пишем в нем 
+cd C:/Ruby193/bin && ruby D:/WebServers/home/iculture/www/wp-content/themes/builder/atfwatch.rb D:/WebServers/home/iculture/www/wp-content/themes/child-theme
+и далее запускаем это просто вызовом данного файла в консоли execute_watch.bat
