@@ -53,3 +53,5 @@
 12. Для легкого запуска из консоли, чтобы каждый раз не писать команду, создаем файл execute_watch, пишем в нем 
 cd C:/Ruby193/bin && ruby D:/WebServers/home/iculture/www/wp-content/themes/builder/atfwatch.rb D:/WebServers/home/iculture/www/wp-content/themes/child-theme
 и далее запускаем это просто вызовом данного файла в консоли execute_watch
+
+13. Для подсветки синтаксиса в netbeans загружаем модули отсюда https://blogs.oracle.com/geertjan/entry/ruby_in_netbeans_ide_7
