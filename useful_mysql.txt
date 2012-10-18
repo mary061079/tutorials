@@ -1,0 +1,4 @@
+Добавить уникальный индекс в таблицу 
+ALTER TABLE `kclwp_zipcodes` ADD UNIQUE(`zipcode`). При этом необязательно писать insert IGNORE, оно и так не даст туда залить
+Убрать любой индекс, включая unique, из таблицы
+ALTER TABLE `kclwp_zipcodes` drop index zipcode
