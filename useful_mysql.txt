@@ -1,4 +1,8 @@
 Добавить уникальный индекс в таблицу 
 ALTER TABLE `kclwp_zipcodes` ADD UNIQUE(`zipcode`). При этом необязательно писать insert IGNORE, оно и так не даст туда залить
+
 Убрать любой индекс, включая unique, из таблицы
 ALTER TABLE `kclwp_zipcodes` drop index zipcode
+
+Подсчитать количество по group by и общее количество обработанных записей (запрос в запросе)
+select SUM(total) from (select count(meta_value) as total, meta_value from kclwp_usermeta where meta_key = 'zipcode' and meta_value != '' group by meta_value) as t;

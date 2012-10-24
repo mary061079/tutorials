@@ -1,0 +1,3 @@
+jQuery('.inner-grocery').find(':checkbox:checked').map(function(){
+          return jQuery(this).val();
+            }).get()
