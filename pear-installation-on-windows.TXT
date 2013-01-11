@@ -1,0 +1,35 @@
+1. Качаем файл
+   http://pear.php.net/go-pear.phar
+2. Кидаем его в директорию usr/local/php5
+3. запускаем консоль от имени администратора
+4. переходим в папку сd usr/local/php5
+5. запускаем файл go-pear.bat
+6. Are you installing a system-wide PEAR or a local copy? (system|local) [system] : 
+    Выбираем system
+7. 1-12, 'all' or Enter to continue:  => all
+8. дальше на все вопросы отвечаем enter или Y где надо
+9. В конце появится сообщение
+    * WINDOWS ENVIRONMENT VARIABLES *
+    For convenience, a REG file is available under D:\WebServers\usr\local\php5\PEAR
+    _ENV.reg .
+    This file creates ENV variables for the current user.
+
+    Double-click this file to add it to the current user registry.
+    
+    Делаем double-click на указанном файле - это добавит переменную окружения pear для дальнейших команд
+ 
+ 
+ 
+    
+  УСТАНОВКА CodeSniffer и стандартов кодирования Wordpress
+  
+  После установки pear запускаем установку CodeSniffer
+  1. Из папки /usr/local/php5, где есть go-pear.bat запускаем команду pear install --alldeps PHP_CodeSniffer
+  2. Потом переходим в папку d:\WebServers\usr\local\php5\PEAR\PHP\CodeSniffer\Standards
+  3. Клонируем стандарты wordpress
+     git clone git://github.com/mrchrisadams/WordPress-Coding-Standards.git Wordpress  
+  4. Проверяем, нормально ли работает
+    Из папки с pear (D:\WebServers\usr\local\php5) 
+    phpcs --standard=Wordpress -s d:\WebServers\home\nicekicks.web\www\public\assets\themes\auctollo-framework\toolkit\extensions\pagination.php
+    
+    d:\WebServers\home\nicekicks.web\www\public\assets\themes\auctollo-framework\toolkit\extensions\pagination.php - путь к файлу, который надо проверить
