@@ -14,6 +14,7 @@ FILE -> Менеджер Виртуальных Носителей -> Оптич
 Добавляем папку -> ok
 Теперь чтобы получить доступ к этим папкам из ubuntu надо прописать в консоли ubuntu 
 mount -t vboxsf имя_папки_в_virtual_box путь_куда_монтировать 
+при этом папка путь_куда_монтировать будет папкой имя_папки_в_virtual_box, он не создает новую
 
 Чтобы размонтировать 
 sudo umount /путь/к/монтированному/файлу
@@ -34,3 +35,11 @@ host key (правый ctrl) + С - отмена режима масштабир
 (правый ctrl) + С - полноэкранный режим
 Для работы в полноэкранном режиме, нужно установить дополнения гостевой ОС. Для этого устанавливаем дополение к гостевой ОС:
 sudo apt-get install virtualbox-guest-additions virtualbox-guest-dkms virtualbox-guest-x11 virtualbox-guest-utils
+
+ЧТОБЫ ПЕРЕКИНУТЬ ОДНУ МАШИНУ НА ДРУГУЮ ИЛИ ПЕРЕМЕСТИТЬ НА ДРУГОЙ ДИСК
+1. находим vdi файл машины и копируем его на другой диск (e:\virtualmachines\ubumtu.vdi)
+2. Меняем запись о первой машине (UUID) 
+Open the Command Prompt
+Change the directory to where VirtualBox is installed (Default: C:\Program Files\Oracle\VirtualBox)
+Type the following: VBOXMANAGE.EXE internalcommands sethduuid "e:\virtualmachines\ubumtu.vdi"
+3. Затем создаем новую машину и указываем путь к нашему vdi файлу как жесткий диск
