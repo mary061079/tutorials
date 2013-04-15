@@ -1,4 +1,4 @@
-1. Добавить уникальный индекс в таблицу 
+﻿1. Добавить уникальный индекс в таблицу 
    ALTER TABLE `kclwp_zipcodes` ADD UNIQUE(`zipcode`). При этом необязательно писать insert IGNORE, оно и так не даст туда залить
 
 2. Убрать любой индекс, включая unique, из таблицы
@@ -16,3 +16,11 @@
 
    В МИНУТАХ
    SELECT FROM tablename where DATE_SUB(NOW(),INTERVAL 7 MINUTE) <= post_date
+
+6. ЧТОБЫ УДАЛИТЬ ВСЕ FULLTEXT индексы с таблицы
+   1. SHOW CREATE TABLE table_name (Смотрим какие индексы существуют и их название, например  FULLTEXT KEY `post_title_2` (`post_title`),)
+   2. Убираем индекс по имени:
+      ALTER TABLE `wp_posts` DROP INDEX post_title_2;
+
+7. Меняем ENGINE таблицы:
+   ALTER TABLE wp_posts
