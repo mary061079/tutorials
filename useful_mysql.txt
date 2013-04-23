@@ -24,3 +24,6 @@
 
 7. Меняем ENGINE таблицы:
    ALTER TABLE wp_posts
+
+8. Меняем линки в таблице wp_posts
+   update `wp_posts` set post_content = replace(post_content, "/wp-content/uploads/","/files/")
