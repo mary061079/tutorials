@@ -1,0 +1,14 @@
+1. USE $wpdb->PREPARE
+$wpdb->query( 
+	$wpdb->prepare( 
+		"
+                DELETE FROM $wpdb->postmeta
+		 WHERE post_id = %d
+		 AND meta_key = %s
+		",
+	        13, 'gargle' 
+        )
+);
+
+2. USE esc_sql()
+http://codex.wordpress.org/Function_Reference/esc_sql
